@@ -4,21 +4,26 @@ class MicropostsController < ApplicationController
   # GET /microposts
   # GET /microposts.json
   def index
-    @microposts = Micropost.all
+    @microposts = Micropost.eager_load(:user)
   end
 
   # GET /microposts/1
   # GET /microposts/1.json
   def show
+    @users = User.where(id: :id)
   end
 
   # GET /microposts/new
   def new
     @micropost = Micropost.new
+    @users = User.all
+    @users_selected = User.first.id
   end
 
   # GET /microposts/1/edit
   def edit
+    @users = User.all
+    @users_selected = params[:id]
   end
 
   # POST /microposts

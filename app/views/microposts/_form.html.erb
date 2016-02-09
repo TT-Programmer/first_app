@@ -16,8 +16,8 @@
     <%= f.text_field :content %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.label :name %><br>
+    <%= select :page, :name, @users.map{|t| [t.name, t.id]}, :selected => @users_selected %>
   </div>
   <div class="actions">
     <%= f.submit %>
