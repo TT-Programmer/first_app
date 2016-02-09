@@ -18,7 +18,7 @@
 
 # Ignore other unneeded files.
 doc/
-*.sqp
+*.swp
 *~
 .project
 .DS_Store
