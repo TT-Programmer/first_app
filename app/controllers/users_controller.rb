@@ -7,6 +7,21 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  #GET /addr
+  def addr
+    @users = User.all
+  end
+
+  def addr_show
+    @user = User.find(params[:id])
+  end
+
+  # GET /users/1/contents
+  def contents
+    @user = User.find(params[:id])
+    @microposts = Micropost.where("user_id = " + params[:id])
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -15,15 +30,19 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @mode = "new"
   end
 
   # GET /users/1/edit
   def edit
+    @mode = "edit"
   end
 
   # POST /users
   # POST /users.json
   def create
+    @mode = params[:user][:bef_mode]
+    puts params[:user][:bef_mode]
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -40,6 +59,12 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    # @check_password = User.where("id = " + params[:id] + " and password = \"" + params[:user][:now_password] + "\"")
+    # if @check_password.nil? || @check_password.size != 1
+    #   redirect_to "/users/" + params[:id], error: "パスワードが間違っています。"
+    #   return
+    # end
+    @mode = params[:user][:bef_mode]
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -69,6 +94,10 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      if params[:user][:bef_mode] == "edit" && params[:user][:password].nil?
+        params.require(:user).permit(:name, :email, :tel, :comment)
+      else
+        params.require(:user).permit(:name, :email, :tel, :comment, :password)
+      end
     end
 end

@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+<h1>ユーザ一覧</h1>
 <p><%= Time.now %></p>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th colspan="3"></th>
+      <th>名前</th>
+      <th>メールアドレス</th>
+      <th>電話番号</th>
+      <th>コメント</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -16,10 +18,13 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
+        <td><%= user.tel %> </td>
+        <td><%= simple_format(user.comment) %></td>
         <td>
-          <%= link_to 'Show', user %>
-          <%= link_to 'Edit', edit_user_path(user) %>
-          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to '表示', user %>
+          <%= link_to '編集', edit_user_path(user) %>
+          <%= link_to '削除', user, method: :delete, data: { confirm: 'よろしいですか？' } %>
+          <%= link_to 'コンテンツ', "/users/#{user.id}/contents" %>
         </td>
       </tr>
     <% end %>
@@ -28,6 +33,6 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to '新規ユーザ登録', new_user_path %>
 <hr>
-<%= link_to 'Top', '/' %>
+<%= link_to 'トップ画面', '/' %>

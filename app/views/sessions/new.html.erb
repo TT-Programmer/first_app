@@ -1,0 +1,22 @@
+<h1>サインイン</h1>
+
+<div>
+  <% if flash[:alert] %>
+    <p><font color="red"><%= flash[:alert] %></font></p>
+  <% end %>
+</div>
+
+<%= form_for(:session, url: sessions_path) do |f| %>
+	<table class="no-style">
+		<tr class="no-style">
+			<td class="no-style"><%= f.label "ユーザ名：　" %></td>
+			<td class="no-style"><%= f.text_field :username %></td>
+		</tr>
+		<tr class="no-style">
+			<td class="no-style"><%= f.label "パスワード：　" %></td>
+			<td class="no-style"><%= f.password_field :password %></td>
+		</tr>
+	</table>
+	<br>
+	<%= f.submit "ログイン" %>
+<% end %>

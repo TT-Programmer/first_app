@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
+  ## セッション
+  resources :sessions, only: [:ner, :create, :destroy]
+  match '/signup', to: 'users#new', via: 'get'
+  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via:'delete'
+  
   #get 'top/index'
-  root to: "top#index"
+  root to: "sessions#new"
   
   resources :microposts
   resources :users
+
+  get "users/:id/contents", :controller => 'users', :action => 'contents'
+  get "top", :controller => 'top', :action => 'index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

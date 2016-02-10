@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'edit_micropost', 'data-turbolinks-track' => true %>
+
 <%= form_for(@micropost) do |f| %>
   <% if @micropost.errors.any? %>
     <div id="error_explanation">
@@ -17,9 +19,10 @@
   </div>
   <div class="field">
     <%= f.label :name %><br>
-    <%= select :page, :name, @users.map{|t| [t.name, t.id]}, :selected => @users_selected %>
+    <%= select :names, :id, @users.map{|t| [t.name, t.id]}, :selected => @users_selected %>
+    <%= f.text_field :user_id, :style => "display:none" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :id => "micropost_edit_submit" %>
   </div>
 <% end %>

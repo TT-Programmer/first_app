@@ -9,6 +9,13 @@
 </head>
 <body>
 
+<% if session[:login] == true %>
+<div style="text-align: right;">
+  <%= link_to 'ログアウト', '/signout', :method => :delete %>
+</div>
+<hr>
+<% end %>
+
 <%= yield %>
 
 </body>

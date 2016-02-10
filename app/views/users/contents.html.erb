@@ -1,0 +1,25 @@
+<h1>コンテンツ一覧</h1>
+
+
+<b>名前：　</b><%= @user.name %>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンテンツ</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @microposts.each do |micropost| %>
+      <tr>
+        <td><%= micropost.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'ユーザ一覧に戻る', users_path %>
+<hr>
+<%= link_to 'トップ画面', '/' %>
