@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 			return
 		end
 
-		@username = User.where("name = \"" + params[:session][:username] + "\"")
+		@username = User.where("name = \'" + params[:session][:username] + "\'")
 
 		if @username.nil? || @username.size != 1
 			redirect_to signin_path, alert: "ユーザが存在しません。"
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 			return
 		end
 
-		@password = User.where("name = \"" + params[:session][:username] + "\" and password = \"" + params[:session][:password] + "\"")
+		@password = User.where("name = \'" + params[:session][:username] + "\' and password = \'" + params[:session][:password] + "\'")
 		puts @password.size
 
 		if @password.size == 1
