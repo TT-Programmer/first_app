@@ -1,0 +1,11 @@
+table:not(.no-style) {
+	border-collapse: collapse;
+	border: 3px solid;
+}
+th:not(.no-style),td:not(.no-style) {
+	padding: 0.5em;
+	border: 1px solid;
+}
+th:not(.no-style) {
+	border-bottom: 3px solid;
+}
