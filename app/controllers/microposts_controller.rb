@@ -85,10 +85,10 @@ class MicropostsController < ApplicationController
 
     def twit(tweet) ## Twitterへのツイート
       client = Twitter::REST::Client.new do |config|
-        config.consumer_key = "uaYZMxFHtKwxc6hMHTGdyNrjo"
-        config.consumer_secret = "VZy1Xj4T2z0z1tO3H8MmlV0P8mNKnpf5AGwpCjQkCv7YbDL9wP"
-        config.access_token = "4885852592-bRKIY7a907jGBiQibvncor0KghckgKo8NgpvU9E"
-        config.access_token_secret = "hSQe3N8CuQV74X8YNp2gplECliTE9E8QxTaO5L66UjkmQ"
+        config.consumer_key = "f4oh7MxGyT0wF5oJQlDYSrDQZ"
+        config.consumer_secret = "CoiAo3iRKS2t7Zwru3skFBANopZZiCUVHi3xqWAxDvSC6ggROp"
+        config.access_token = "727104969376059394-3MMr5SHvl2JwiiSPs5vIxHKfAkoGL6T"
+        config.access_token_secret = "LIz0yTC4MbBUrjAqr54RzosIOoRSa6GxCpbNXmESVRuDI"
       end
       begin
         tweet = (tweet.length > 140) ? tweet[0..139].to_s : tweet
